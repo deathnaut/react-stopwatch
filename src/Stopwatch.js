@@ -6,7 +6,6 @@ class Stopwatch extends Component {
     super(props);
     this.state = {
       time: 0,
-      interval: 0
     }
     this._resetTime = this._resetTime.bind(this);
     this._startTime = this._startTime.bind(this);
@@ -20,18 +19,15 @@ class Stopwatch extends Component {
   }
 
   _startTime(e){
-    this.changeTime = () => {
+    this.interval = setInterval(() => {
       this.setState({
         time: this.state.time + 1
       })
-    }
-    this.setState ({
-        interval: setInterval(this.changeTime, 1000)
-    })
+    }, 1000)
   }
 
   _pauseTime(e){
-    clearInterval(this.state.interval)
+    clearInterval(this.interval)
   }
 
   render() {
